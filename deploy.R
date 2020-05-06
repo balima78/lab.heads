@@ -5,7 +5,7 @@ rsconnect::setAccountInfo(name='balima',
                           secret='F0+j2PzFx/kfQPHfkhU6owZr/0wVB/RYdijS7Myx')
 
 
-rsconnect::deployApp("D:/PhD/HEADS/LAB/lab/lab.heads")
+rsconnect::deployApp("D:/PhD/HEADS/LAB/lab/lab_heads")
 
 
 getwd()

@@ -38,7 +38,9 @@ shinyUI(
       
       plotOutput("distPlot"),
       
-      plotOutput("corrPlot")
+      plotOutput("corrPlot"),
+      
+      textOutput("test")
     )
   )
 )
