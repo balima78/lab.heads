@@ -1,0 +1,6 @@
+ficheiro;cod;descricao;origem;fonte
+despesa.csv;DespTotal;Despesa corrente total;Quadros CSS_B11_00_18_Indice.xls;INE
+despesa.csv;RegObrigat;Regimes de financiamento das administrações públicas e regimes de financiamento contributivos obrigatórios ;Quadros CSS_B11_00_18_Indice.xls;INE
+despesa.csv;RegVolunt;Regimes de financiamento voluntários;Quadros CSS_B11_00_18_Indice.xls;INE
+despesa.csv;DespFamilia;Despesa das famílias;Quadros CSS_B11_00_18_Indice.xls;INE
+despesa.csv;HospPublicos;"Prestadores de cuidados de saúde; Hospitais Publicos";Quadros CSS_B11_00_18_Indice.xls;INE

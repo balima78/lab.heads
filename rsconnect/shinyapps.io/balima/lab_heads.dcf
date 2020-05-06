@@ -1,0 +1,10 @@
+name: lab_heads
+title:
+username:
+account: balima
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2252727
+bundleId: 3111378
+url: https://balima.shinyapps.io/lab_heads/
+when: 1588777848.72911
