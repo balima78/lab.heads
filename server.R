@@ -1,27 +1,27 @@
 library(tidyverse)
 
+source("fxs.R")
+
 despesa<-read.csv2("data/despesa.csv")
 
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
 
-  despesaT<-reactive({despesa %>% filter(ano >= input$ano[1] & ano <= input$ano[2])})
+  valx<-reactive({ifelse(input$valor == "Despesa_Total","DespTotal",
+               ifelse(input$valor == "Regime_Obrigatorio", "RegObrigat",
+                      ifelse(input$valor == "Regime_Voluntario", "RegVolunt",
+                             "DespFamilia")))
+  })
   
-  valorx<-reactive({input$valor})
+  b1<-reactive({input$ano[1]})
+  b2<-reactive({input$ano[2]})
   
-  output$test<-renderText({
-    valx<-ifelse(valorx() == "Despesa_Total","DespTotal",
-                 ifelse(valorx() == "Regime_Obrigatorio", "RegObrigat",
-                        ifelse(valorx() == "Regime_Voluntario", "RegVolunt",
-                               "DespFamilia"))
-                 )
-    })
+  despesaT<-reactive({despesa %>% filter(ano >= b1() & ano <= b2())})
 
   output$distPlot <- renderPlot({
-    # line plot com despesa total por ano
-    gdt<-ggplot(despesaT(), aes(x=ano, y=DespTotal)) +
-      geom_point() + scale_x_continuous(breaks = input$ano[1]:input$ano[2]) +
+    # point plot com despesas por ano
+    gdt<-plotD(dados = despesaT(), yy = valx(), b1 = b1(), b2 = b2()) +
       ggtitle("Evolução anual das despesas de saúde")
 
     if(input$tipo == "area"){gdt + geom_area(fill = "#E1B378") + theme_bw()}

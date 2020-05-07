@@ -38,10 +38,10 @@ shinyUI(
                         titlePanel("Representações gráficas"),
                         plotOutput("distPlot"),
                         plotOutput("corrPlot"),
-                        textOutput("test")
+                        textOutput("test") ## linha para apagar
                         )
                       ),
-             ##### novo tab para resultados GHD
+             ##### novo tab para resultados GHD e outros
              tabPanel("GHD", icon = icon("list-alt")
                       ),
              tabPanel("mais um", icon = icon("accessible-icon")
