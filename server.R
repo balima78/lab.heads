@@ -2,7 +2,13 @@ library(tidyverse)
 
 source("fxs.R")
 
+# dados de despesas em saude
 despesa<-read.csv2("data/despesa.csv")
+
+# dados demograficos
+demog<-read.csv2("data/demog.csv")
+demog<-demog %>% pivot_longer(4:21, "g.etario", "n")
+demog<-demog %>% mutate(value = ifelse(genero == "masculino", -1*value, value))
 
 
 # Define server logic required to draw a histogram
@@ -54,6 +60,21 @@ shinyServer(function(input, output, session) {
     else if(input$valor =="Regime_Obrigatorio"){gcr2}
     else if(input$valor =="Regime_Voluntario"){gcr3}
     else if(input$valor =="Despesa_Familiar"){gcr4}
+    
+  })
+  
+
+  output$demoPlot <- renderPlot({
+    
+    ggplot(demog %>% filter(ano == 2018), 
+           aes(x = g.etario, y = value, fill = genero)) + 
+      geom_bar(subset = .(genero == "feminino"), stat = "identity") + 
+      geom_bar(subset = .(genero == "masculino"), stat = "identity") + 
+      scale_y_continuous(breaks = seq(-400000, 400000, 100000), 
+                         labels = paste0(as.character(c(4:0, 1:4)), "E5")) + 
+      coord_flip() + 
+      scale_fill_brewer(palette = "Set1") + 
+      theme_bw()
     
   })
 }
