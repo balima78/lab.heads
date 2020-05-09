@@ -47,11 +47,12 @@ shinyUI(
              tabPanel("População", icon = icon("users"),
                       sidebarPanel(
                         a("opções para os gráficos"),
-                        wellPanel(sliderInput("anoP", "",
+                        wellPanel(sliderInput("anoP", "Selecione ano",
                                               min = 2000, max = 2018,
                                               value = 2009, step = 1, sep = "",
                                               animate = animationOptions(interval = 1600, loop = TRUE))
-                        )
+                        ),
+                        submitButton("aplicar alterações", icon = icon("refresh"))
                       ),
                       mainPanel(
                         titlePanel("Piramide demográfica de Portugal"),

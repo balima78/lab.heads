@@ -63,19 +63,23 @@ shinyServer(function(input, output, session) {
     
   })
   
+  anoP<-reactive({input$anoP})
 
   output$demoPlot <- renderPlot({
-    
-    ggplot(demog %>% filter(ano == 2018), 
-           aes(x = g.etario, y = value, fill = genero)) + 
-      geom_bar(subset = .(genero == "feminino"), stat = "identity") + 
-      geom_bar(subset = .(genero == "masculino"), stat = "identity") + 
-      scale_y_continuous(breaks = seq(-400000, 400000, 100000), 
-                         labels = paste0(as.character(c(4:0, 1:4)), "E5")) + 
-      coord_flip() + 
-      scale_fill_brewer(palette = "Set1") + 
+    dt<-demog %>% filter(ano == anoP())
+
+    gdp<-ggplot(dt) +
+      geom_bar(aes(x = g.etario, y = value, fill = genero), 
+               subset(dt,dt$genero=="feminino"), stat = "identity") +
+      geom_bar(aes(x = g.etario, y = value, fill = genero), 
+               subset(dt,dt$genero=="masculino"), stat = "identity") +
+      scale_y_continuous(breaks = seq(-400000, 400000, 100000),
+                         labels = paste0(as.character(c(4:0, 1:4)), "E5")) +
+      coord_flip() +
+      scale_fill_brewer(palette = "Set1") +
       theme_bw()
-    
+    gdp
+
   })
 }
 )
