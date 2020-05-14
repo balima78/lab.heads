@@ -4,3 +4,12 @@ despesa.csv;RegObrigat;Regimes de financiamento das administrações públicas e re
 despesa.csv;RegVolunt;Regimes de financiamento voluntários;Quadros CSS_B11_00_18_Indice.xls;INE
 despesa.csv;DespFamilia;Despesa das famílias;Quadros CSS_B11_00_18_Indice.xls;INE
 despesa.csv;HospPublicos;"Prestadores de cuidados de saúde; Hospitais Publicos";Quadros CSS_B11_00_18_Indice.xls;INE
+3-Camas_Hospitais.csv;camas_HG;Camas Hospitais Gerais;;PORDATA
+3-Camas_Hospitais.csv;camas_HE;Camas Hospitais Especializados;;PORDATA
+3-Camas_Hospitais.csv;camas_HT;Camas Hospitais Total;;PORDATA
+2-consultas_internas.csv;cns_hospitais;Consultas Hospitais;;PORDATA
+2-consultas_internas.csv;int_hospitais;Internamentos Hospitais;;PORDATA
+2-consultas_internas.csv;urg_hospitais;Urgências Hospitais;;PORDATA
+4-medicamentos.csv;sns;sns(milhoesE);;Portal transparencia
+4-medicamentos.csv;utente;utente;;Portal transparencia
+4-medicamentos.csv;total;Total;;Portal transparencia
