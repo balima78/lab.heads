@@ -44,6 +44,19 @@ shinyServer(function(input, output, session) {
     else{gdt + geom_line(stat="identity", colour = "red") + theme_bw()}
   })
 
+# percentagem do tipo de despesas
+  output$percPlot <- renderPlot({
+    dd<-despesaT() %>% select(ano, RegObrigat, RegVolunt, DespFamilia) %>% pivot_longer(cols = 2:4, names_to = "tipoDespesa")
+    gpd<-ggplot(dd, aes(ano, value, fill = tipoDespesa)) + 
+      geom_bar(stat="identity", position = "fill") +
+      #scale_y_continuous(labels = percent_format()) +
+      scale_x_continuous(breaks = b1():b2()) +
+      labs(fill = "Tipo de despesa", y = "valor percentual (%)") +
+      scale_fill_brewer(palette="Blues") + 
+      theme_bw()
+    gpd
+  })
+  
 # Correlação entre as Despesas e o gasto em Hospitais  
   output$corrPlot <- renderPlot({
     gcr1<-ggplot(despesaT(),aes(x=HospPublicos, y=DespTotal)) + 

@@ -38,6 +38,7 @@ shinyUI(
                       mainPanel(
                         titlePanel("Representações gráficas"),
                         plotOutput("distPlot"),
+                        plotOutput("percPlot"),
                         plotOutput("corrPlot")
                         )
                       ),
