@@ -246,6 +246,22 @@ shinyServer(function(input, output, session) {
       theme_bw() + theme(legend.position = c(0.65, 0.2))
 
     })
+  
+##################### GDHs ##############################  
+  output$gdh10Plot <- renderPlotly({
+    p<-ggplot(gdh10, aes(x=ano, y=round(value / 1000000,2), group=gdh)) + 
+      geom_line(aes(color=factor(gdh))) + 
+      geom_point(aes(color=factor(gdh))) + 
+      scale_x_continuous(breaks = 2000:2014) +
+      labs(y = "valor (milhoes de €)",
+           x = "Ano",
+           colour = "top 10 GDHs",
+           title = "Evolução do valor por GDHs ao longo dos anos") + 
+      theme_bw() + theme()
+      
+      ggplotly(p)
+  })
+  
 }
 )
 

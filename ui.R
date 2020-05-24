@@ -12,7 +12,7 @@ shinyUI(
                 windowTitle = "HEADS"),
     titlePanel("HEADS | LAB"),
     
-    navbarPage("Application Maravilha",
+    navbarPage("Money 4 Health",
                tabPanel("Despesas", icon = icon("money"),
                       # Application title
                       #titlePanel("opções para os gráficos"),
@@ -95,7 +95,10 @@ shinyUI(
                         plotOutput("corrMeds")
                       )
              ),
-             tabPanel("GHD", icon = icon("list-alt")
+             tabPanel("GHD", icon = icon("list-alt"),
+                      mainPanel(
+                        plotlyOutput("gdh10Plot")
+                      )
                       ),
              tabPanel("População", icon = icon("users"),
                       sidebarPanel(
