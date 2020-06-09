@@ -13,7 +13,7 @@ plotCor<-function(dados, xx = "HospPublicos", yy = "camasHT"){
   xx<-sym(xx)
   yy<-sym(yy)
   ggplot(dados, aes(x=!!xx, y=!!yy)) +
-    geom_point() + geom_smooth() +
+    geom_point() + geom_smooth(method="lm") +
     theme_bw()
   }
 
@@ -54,34 +54,16 @@ pop_65<-pop %>% filter(ano > 1999) %>% group_by(ano,plus.65) %>%
 
 ################################
 
-gdh<-read.csv2("data/gdh_internamentos.csv")
+gdh10V<-read.csv("data/gdh10V.csv")
 
-precos2009<-read_csv2("data/precos2009.csv")
-precos2013<-read_csv2("data/precos2013.csv")
+gdh10N<-read.csv("data/gdh10N.csv")
 
-gdh <- gdh %>% left_join(precos2009) %>% left_join(precos2013)
+# designação GDHs ---------------------------------------------------------
+gdhDesigna <- read_csv2("data/gdhDesigna.csv") %>% 
+  mutate(GDH = as.character(gdh))
 
-gdh <- gdh %>% mutate(v2000 = n2000 * preco2009,
-                      v2001 = n2001 * preco2009,
-                      v2002 = n2002 * preco2009,
-                      v2003 = n2003 * preco2009,
-                      v2004 = n2004 * preco2009,
-                      v2005 = n2005 * preco2009,
-                      v2006 = n2006 * preco2009,
-                      v2007 = n2007 * preco2009,
-                      v2008 = n2008 * preco2009,
-                      v2009 = n2009 * preco2009,
-                      v2010 = n2010 * preco2009,
-                      v2011 = n2011 * preco2009,
-                      v2012 = n2012 * preco2009,
-                      v2013 = n2013 * preco2013,
-                      v2014 = n2014 * preco2013
-                      )
+gdhDesigna <-gdhDesigna %>% filter(gdh %in% c(35,39, 55,162,167,211,219,359,371,381,494,818,105,209,211,219,359,371,480,483,558,585,818)) %>% 
+  select(GDH,designacao)
 
-gdh <- gdh %>% filter(!gdh %in% c(342,343,415,483)) %>%  
-  rowwise() %>% mutate(avg = mean(v2000:v2014, na.rm = T)) %>% ungroup()
-
-gdh10<-gdh %>% top_n(10, avg) %>% select(gdh, v2000:v2014) %>% 
-  pivot_longer(v2000:v2014, names_to = "vano") %>% 
-  mutate(ano = as.numeric(str_sub(vano, start= -4)))
+Encoding(gdhDesigna$designacao) <- "latin1"
 
