@@ -223,6 +223,10 @@ shinyServer(function(input, output, session) {
       geom_point(aes(y = utente, color = "Utentes")) +
       geom_line(aes(y = total, color = "Total")) + 
       geom_point(aes(y = total, color = "Total")) + 
+      geom_vline(xintercept = 2010.5, linetype="dotted", 
+                 color = "red", size=1.5) + 
+      geom_vline(xintercept = 2014.5, linetype="dotted", 
+                 color = "green", size=1.5) +
       scale_colour_manual(values = c("#327345", "#ff4646", "#37c8ae")) +
       scale_x_continuous(breaks = seq(from = input$anoM[1], to = input$anoM[2], by = 1)) +
       scale_y_continuous(breaks = seq(from = 0, to = 2500, by = 100)) +
@@ -267,7 +271,9 @@ shinyServer(function(input, output, session) {
       geom_bar(aes(x = g.etario, y = value, fill = genero), 
                subset(dt,dt$genero=="masculino"), stat = "identity") +
       scale_y_continuous(breaks = seq(-400000, 400000, 100000),
-                         labels = paste0(as.character(c(4:0, 1:4)), "E5")) +
+                         labels = c(rev(seq(0,400,100)),seq(100,400,100))) +
+      xlab("grupo etário") +
+      ylab("milhares de pessoas") +
       coord_flip() +
       scale_fill_brewer(palette = "Set1") +
       theme_bw()

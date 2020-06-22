@@ -39,6 +39,8 @@ shinyUI(
                       mainPanel(
                         titlePanel("Orçamentos anuais"),
                         plotOutput("distPlot"),
+                        h6("A linha tracejada vertical a vermelho representa a entrada da Troika em Portugal."),
+                        h6("A linha tracejada vertical a verde representa a saída da Troika de Portugal."),
                         a(href="https://www.ine.pt/xportal/xmain?xpid=INE&xpgid=ine_destaques&DESTAQUESdest_boui=354229895&DESTAQUESmodo=2&xlang=pt", 
                           "fonte: Instituto Nacional de Estatística"),
                         br(),
@@ -112,6 +114,8 @@ shinyUI(
                       ),
                       mainPanel(
                         plotOutput("medsPlot"),
+                        h6("A linha tracejada vertical a vermelho representa a entrada da Troika em Portugal."),
+                        h6("A linha tracejada vertical a verde representa a saída da Troika de Portugal."),
                         hr("Na área do medicamento, os resultados das políticas de contenção que Portugal teve de adotar para cumprir o Memorando de Entendimento (Plano da Tróica), estão bem evidentes no gráfico “Encargos com Medicamentos”. Senão vejamos, desde início do século 21 até ao ano 2010 há um registo crescente da despesa nesta área. É em 2010 que há uma desaceleração acentuada na despesa até ao ano 2013, altura em que muito lentamente se inverte esta tendência. Houve um aumento de 245,9 milhões de euros (11,1%) de despesa entre 2015 e 2018, 173 milhões de euros no setor hospitalar e 72,8 milhões de euros no setor ambulatório. Este aumento de despesa permitiu um importante reforço do acesso à inovação terapêutica mediante a aprovação de 51 novos medicamentos em 2016, 60 em 2017 e 40 em 2018. "),
                         plotOutput("corrMeds"),
                         a(href="https://www.pordata.pt/Portugal/SNS+encargos+com+medicamentos+++Continente-327", 

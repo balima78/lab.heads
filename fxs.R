@@ -5,6 +5,10 @@ library(rlang)
 plotD<-function(dados, yy = "DespTotal", b1, b2){
   yy<-sym(yy)
   ggplot(dados, aes(x=ano, y=!!yy)) +
+    geom_vline(xintercept = 2010.5, linetype="dotted", 
+               color = "red", size=1.5) + 
+    geom_vline(xintercept = 2014.5, linetype="dotted", 
+               color = "green", size=1.5) +
     geom_point() + scale_x_continuous(breaks = b1:b2) 
 }
 
