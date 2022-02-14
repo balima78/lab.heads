@@ -115,7 +115,7 @@ shinyServer(function(input, output, session) {
   
   # descritivo para a correlação com os gastos hospitalares
   output$explRel <- renderText({
-    if(input$valor == "Despesa Total"){"Verifica-se uma correlação lienar entre a despesa total anual em Saúde e os gastos anuais dos hospitais públicos."}
+    if(input$valor == "Despesa Total"){"Verifica-se uma correlação linear entre a despesa total anual em Saúde e os gastos anuais dos hospitais públicos."}
     else if(input$valor =="Regime Obrigatorio"){"Podemos verificar uma correlação linear entre o valor anual do regime obrigatório e os gastos hospitalares."}
     else if(input$valor =="Regime Voluntario"){"Não existe uma correlação clara entre os valores anuais afectos ao regime voluntário e os gastos hospitalares anuais."}
     else if(input$valor =="Despesa Familiar"){"Não existe uma correlação clara entre os valores anuais afectos às despesas fas famílias e os gastos hospitalares anuais."}
